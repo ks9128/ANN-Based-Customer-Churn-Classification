@@ -23,16 +23,27 @@ with open('scaler.pkl','rb') as file:
 ## streamlit app
 st.title('Customer Churn Prediction')
 ## user input
-geography = st.selectbox('Geography',onehot_encoder_geo.categories_[0])
-gender = st.selectbox('Gender',label_encoder_gender.classes_)
-age = st.slider('Age',18,92)
-balance = st.number_input('Balance')
-credit_score = st.number_input("Credit Score")
-estimated_salary = st.number_input('Estimated Salary')
-tenure = st.slider('Tenure',0,10)
-num_of_products = st.slider('Number of Products ', 1,4)
-has_cr_card= st.selectbox('Has Credit Card',[0,1])
-is_active_member = st.selectbox('Is active member',[0,1])
+
+col1, col2 = st.columns(2)
+
+with col1:
+    geography = st.selectbox('🌏 Geography',onehot_encoder_geo.categories_[0],index=None)
+    # geography = st.selectbox('🌏 Geography',list(onehot_encoder_geo.categories_[0]),)
+    age = st.slider('🎂 Age',18,92)
+    tenure = st.slider('📅 Tenure',0,10)
+
+with col2:
+    gender = st.selectbox('🧑‍🦰 Gender',label_encoder_gender.classes_, index=None)
+    num_of_products = st.slider('🛍️ Number of Products ', 1,4)
+    is_active_member = 1 if st.selectbox('✅ Is active member', ['No', 'Yes']) == 'Yes' else 0
+    # is_active_member = 1 if st.toggle('✅ Active member ?') else 0
+
+
+with st.expander("💰 Financial Information ", expanded=True):
+    credit_score = st.number_input("📊 Credit Score",min_value=300, max_value=900,step=1, value=None)
+    balance = st.number_input('🏦 Balance',value=None)
+    estimated_salary = st.number_input('💵 Estimated Salary',value=None)
+    has_cr_card= st.selectbox('💳 Has Credit Card',[0,1])
 
 # prepare input data
 input_data = pd.DataFrame({
@@ -60,10 +71,18 @@ input_data_scaled = scaler.transform(input_data)
 prediction = model.predict(input_data_scaled)
 prediction_probab = prediction[0][0]
 
-# Display prediction probability 
-st.write(f"Churn Probability: {prediction_probab:.2%}")
+#
+st.subheader("📊  Prediction Result")
 
-if prediction_probab > 0.5:
-    st.write("The customer is likely to churn.")
-else:
-    st.write("The customer is not likely to churn.")
+col1 , col2 = st.columns(2)
+with col1:
+    st.metric(label="Churn Probability", value=f"{prediction_probab: .2%}")
+
+with col2:
+    if prediction_probab > 0.5:
+        st.error("⚠️ High risk of churn!")
+    else:
+        st.success("✅ Customer is likely to stay.")
+
+
+   
