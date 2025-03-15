@@ -4,6 +4,8 @@ A machine learning project that predicts customer churn for a bank using Artific
 
 🔗 **[Try the Live Demo](https://ann-based-customer-churn-classification-gwmacd6vffmupykub9bqtn.streamlit.app/)**
 
+📦 **[GitHub Repository](https://github.com/ks9128/ANN-Based-Customer-Churn-Classification.git)**
+
 ## Project Overview
 
 This project uses a deep learning model to predict whether a bank customer is likely to leave the bank (churn) based on various customer attributes. The model is trained on historical customer data and can be used to identify customers who are at risk of churning, allowing the bank to take proactive retention measures.
@@ -54,8 +56,8 @@ The project uses the "Churn_Modelling.csv" dataset which contains the following 
 
 1. Clone this repository:
 ```bash
-git clone https://github.com/yourusername/customer-churn-prediction.git
-cd customer-churn-prediction
+git clone https://github.com/ks9128/ANN-Based-Customer-Churn-Classification.git
+cd ANN-Based-Customer-Churn-Classification
 ```
 
 2. Create and activate a virtual environment (optional but recommended):
