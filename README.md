@@ -2,9 +2,22 @@
 
 A machine learning project that predicts customer churn for a bank using Artificial Neural Networks (ANN).
 
+🔗 **[Try the Live Demo](https://ann-based-customer-churn-classification-gwmacd6vffmupykub9bqtn.streamlit.app/)**
+
 ## Project Overview
 
 This project uses a deep learning model to predict whether a bank customer is likely to leave the bank (churn) based on various customer attributes. The model is trained on historical customer data and can be used to identify customers who are at risk of churning, allowing the bank to take proactive retention measures.
+
+## Live Demo
+
+The project is deployed and accessible through Streamlit Cloud. You can try the live demo here:
+[Customer Churn Predictor App](https://ann-based-customer-churn-classification-gwmacd6vffmupykub9bqtn.streamlit.app/)
+
+Features of the live demo:
+- Interactive input fields for customer data
+- Real-time predictions
+- User-friendly interface
+- Instant results with probability scores
 
 ## Features
 
@@ -61,15 +74,18 @@ pip install -r requirements.txt
 
 ## Usage
 
-### Running the Web Application
+### Running the Web Application Locally
 
-To run the Streamlit web application:
+To run the Streamlit web application on your local machine:
 
 ```bash
 streamlit run app.py
 ```
 
 This will start a local web server and open the application in your default web browser.
+
+Alternatively, you can access the deployed version of the application at:
+[https://ann-based-customer-churn-classification-gwmacd6vffmupykub9bqtn.streamlit.app/](https://ann-based-customer-churn-classification-gwmacd6vffmupykub9bqtn.streamlit.app/)
 
 ### Exploring the Notebooks
 
